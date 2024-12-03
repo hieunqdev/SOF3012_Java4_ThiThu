@@ -40,8 +40,8 @@ public class NhanVienServlet extends HttpServlet {
 	        case "create":
 	            createNV(request, response);
 	            break;
-	        case "Delete":
-//	        	deleteNV(request, response);
+	        case "delete":
+	        	deleteNV(request, response);
 	            break;
 	        default:
 	            break;
@@ -60,5 +60,13 @@ public class NhanVienServlet extends HttpServlet {
         
         response.sendRedirect("NhanVienServlet");
     }
+	
+	private void deleteNV(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String maNV = request.getParameter("maNV");
+		NhanVienDao nvDAO = new NhanVienDao();
+		nvDAO.deleteNV(maNV);
+		
+		response.sendRedirect("NhanVienServlet");
+	}
 
 }

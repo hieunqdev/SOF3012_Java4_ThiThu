@@ -31,4 +31,15 @@ public class NhanVienDao {
 			em.getTransaction().rollback();
 		}
 	}
+	
+	public void deleteNV(String MaNV) {
+		NhanVien nv = em.find(NhanVien.class, MaNV);
+		try {
+			em.getTransaction().begin();
+			em.remove(nv);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
+	}
 }

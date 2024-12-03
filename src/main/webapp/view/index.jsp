@@ -24,16 +24,16 @@
 		<form class="row g-3" action="NhanVienServlet" method="post">
 			<h1 class="text-center">Quản lý nhân viên</h1>
 			<div class="col-6">
-				<label for="ma" class="form-label">Mã</label> <input
-					type="text" name="ma" class="form-control" id="ma">
+				<label for="ma" class="form-label">Mã</label> 
+				<input type="text" name="ma" class="form-control" id="ma" required>
 			</div>
 			<div class="col-6">
-				<label for="diachi" class="form-label">Địa chỉ</label> <input
-					type="text" name="diachi" class="form-control" id="diachi">
+				<label for="diachi" class="form-label">Địa chỉ</label> 
+				<input type="text" name="diachi" class="form-control" id="diachi" required>
 			</div>
 			<div class="col-6">
-				<label for="ten" class="form-label">Tên</label> <input
-					type="text" name="ten" class="form-control" id="ten">
+				<label for="ten" class="form-label">Tên</label> 
+				<input type="text" name="ten" class="form-control" id="ten" required>
 			</div>
 			<div class="col-6">
 				<label class="form-label"> Giới tính </label>
@@ -44,7 +44,7 @@
 				</div>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="gioitinh"
-						id="flexRadioDefault2" value="female" > <label
+						id="flexRadioDefault2" value="female"> <label
 						class="form-check-label" for="flexRadioDefault2"> Nữ </label>
 				</div>
 			</div>
@@ -72,8 +72,11 @@
 						<td>${item.maNV}</td>			
 						<td>${item.tenNV}</td>			
 						<td>${item.diaChi}</td>			
-						<td>${item.gioiTinh == true ? "Nam": "Nữ"}</td>			
-					<td><a class="btn btn-danger" href="../nhan-vien/remove?ma=${item.maNV}">Remove</a></td>
+						<td>${item.gioiTinh == true ? "Nam": "Nữ"}</td>	
+					<form action="NhanVienServlet" method="POST">		
+						<td><button name="action" value="delete" class="btn btn-danger">Xóa</button></td>
+						<input type="hidden" name="maNV" value="${item.maNV}">
+					</form>
 				</tr>
 				</c:forEach>
 			</tbody>
